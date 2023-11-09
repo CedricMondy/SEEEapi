@@ -115,6 +115,9 @@ run_local <- function(indic, version, files, dir_algo) {
 
   list(info = strsplit(res, split = "\n")[[1]][1] %>%
          gsub(pattern = ";", replacement = " "),
-       result =  read_delim(res, delim = ";", skip = 1,
-                            col_type = cols(.default = "c")))
+       result =  read_delim(
+         file.path(dir_algo, indic, version,
+                   paste0(indic, "_v", version, "_resultats.csv")),
+         delim = ";", skip = 1,
+         col_type = cols(.default = "c")))
 }
