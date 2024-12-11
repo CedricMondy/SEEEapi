@@ -37,7 +37,7 @@ calc_indic <- function(indic, version = NULL, file_paths = NULL, data = NULL,
       if (grepl("data.frame", class(data))) {
         file_paths <- tempfile(fileext = ".txt")
 
-        write_delim(x = data, path = file_paths, delim = "\t")
+        write_delim(x = data, file = file_paths, delim = "\t")
 
       } else {
         if (grepl("list", class(data)) &
@@ -56,7 +56,7 @@ calc_indic <- function(indic, version = NULL, file_paths = NULL, data = NULL,
           walk(seq(length(file_paths)),
                function(i) {
                  write_delim(x     = data[[i]],
-                             path  = file_paths[i],
+                             file  = file_paths[i],
                              delim = delim[i])
                })
         }
